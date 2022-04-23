@@ -1,6 +1,8 @@
 import pygame
 import variables
 import bullet
+import flightfighter
+from os import path
 
 
 # Игрок
@@ -8,9 +10,9 @@ class Player(pygame.sprite.Sprite):
 
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
+        self.Player_sprite = pygame.image.load(path.join(variables.IMG_DIR, "Player.png"))
         self.Health = 2
-        self.image = pygame.Surface((40, 20))
-        self.image.fill((0, 0, 255))
+        self.image = self.Player_sprite
         self.rect = self.image.get_rect()
         self.rect.center = (100, variables.HEIGHT / 2)
         self.speedx = 0
@@ -24,6 +26,9 @@ class Player(pygame.sprite.Sprite):
     def death(self):
         if self.Health <= 0:
             variables.RUNNING = False
+            variables.MENU = True
+            Game = flightfighter.GameManager()
+            Game.show_menu()
         else:
             self.Health -= 1
             self.rect.center = (100, variables.HEIGHT / 2)

@@ -1,13 +1,15 @@
 import pygame
 import random
+import variables
+from os import path
 
 
 class Enemies(pygame.sprite.Sprite):
 
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.Surface((40, 20))
-        self.image.fill((255, 0, 0))
+        self.enemy_sprite = pygame.image.load(path.join(variables.IMG_DIR, "Enemy.png"))
+        self.image = self.enemy_sprite
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(1050, 1150)
         self.rect.y = 768 - 267 - (random.randrange(20, 300) + 60)
