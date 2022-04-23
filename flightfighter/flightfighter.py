@@ -39,7 +39,7 @@ class GameManager():
     def show_menu(self):
         while variables.MENU:
             self.clock.tick(variables.FPS)
-            self.background = pygame.image.load(path.join(variables.IMG_DIR, "main_menu.jpg"))
+            self.background = pygame.image.load(path.join(variables.IMG_DIR, "background.png"))
             
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
