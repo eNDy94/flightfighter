@@ -4,6 +4,7 @@ import player
 import enemy
 import variables
 import tree
+import cloud
 from os import path
 
 
@@ -16,16 +17,18 @@ class GameManager():
         self.screen = pygame.display.set_mode(variables.SCREEN)
         pygame.display.set_caption("Flight Fighter")
         self.clock = pygame.time.Clock()
-        self.Player = player.Player()
-        variables.ALL_SPRITES.add(self.Player)
         for x in range(3):
             self.Tree = tree.Trees()
             self.Enem = enemy.Enemies()
+            self.Cloud = cloud.Clouds()
             variables.ALL_SPRITES.add(self.Enem)
             variables.ALL_SPRITES.add(self.Tree)
+            variables.ALL_SPRITES.add(self.Cloud)
             variables.ENEMIES.add(self.Enem) 
             variables.TREES.add(self.Tree)
-
+            variables.CLOUDS.add(self.Cloud)
+        self.Player = player.Player()
+        variables.ALL_SPRITES.add(self.Player)
     def draw_text(self, surf, text, size, x, y, color = None):
         font = pygame.font.Font(variables.FONT_NAME, size)
         if color is not None:
@@ -81,16 +84,19 @@ class GameManager():
                 variables.BULLETS = pygame.sprite.Group()
                 variables.ENEMIES = pygame.sprite.Group()
                 variables.TREES = pygame.sprite.Group()
-                self.Player = player.Player()
                 variables.SCORE = 0
-                variables.ALL_SPRITES.add(self.Player)
                 for x in range(3):
                     self.Tree = tree.Trees()
                     self.Enem = enemy.Enemies()
+                    self.Cloud = cloud.Clouds()
                     variables.ALL_SPRITES.add(self.Enem)
                     variables.ALL_SPRITES.add(self.Tree)
+                    variables.ALL_SPRITES.add(self.Cloud)
                     variables.ENEMIES.add(self.Enem) 
-                    variables.TREES.add(self.Tree)            
+                    variables.TREES.add(self.Tree)   
+                    variables.CLOUDS.add(self.Cloud)
+                self.Player = player.Player()
+                variables.ALL_SPRITES.add(self.Player)        
                 variables.SCORE = 0
             self.clock.tick(variables.FPS)
             for event in pygame.event.get():
