@@ -4,6 +4,7 @@ import random
 from os import path
 
 
+# Облака
 class Clouds(pygame.sprite.Sprite):
     
     def __init__(self):
@@ -16,7 +17,8 @@ class Clouds(pygame.sprite.Sprite):
         self.rect.right = random.randrange(1050, 1500)
         self.rect.centery = random.randrange(0, 500)
         self.speedx = 2
-        
+
+    # Метод обновления     
     def update(self):
         self.rect.x -= self.speedx
         if self.rect.right < 0:

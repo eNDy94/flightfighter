@@ -8,8 +8,10 @@ import cloud
 from os import path
 
 
+# Основной класс игры 
 class GameManager():
 
+    # Конструктор класса
     def __init__(self):
         pygame.init()
         self.screen = pygame.display.set_mode(variables.SCREEN)
@@ -29,10 +31,11 @@ class GameManager():
             variables.ENEMIES.add(self.Enem) 
             variables.TREES.add(self.Tree)
         self.Player = player.Player()
-        print(self.time_spawn_player)
         variables.ALL_SPRITES.add(self.Player)
         variables.ALL_SPRITES.add(self.Shooting_enemy)
         variables.SHOOTING_ENEMIES.add(self.Shooting_enemy)
+        
+    # Отрисовка текста    
     def draw_text(self, surf, text, size, x, y, color = None):
         font = pygame.font.Font(variables.FONT_NAME, size)
         if color is not None:
@@ -43,6 +46,7 @@ class GameManager():
         text_rect.midtop = (x, y)
         surf.blit(text_surface, text_rect) 
     
+    # Отображение главного меню
     def show_menu(self):
         while variables.MENU:
             self.clock.tick(variables.FPS)
@@ -62,7 +66,8 @@ class GameManager():
             self.screen.blit(self.background, (0, 0))
             self.draw_text(self.screen, "Press ENTER", 50, variables.WIDTH/2, variables.HEIGHT/2)
             pygame.display.flip()
-            
+
+    # Пауза            
     def pause(self):
         variables.PAUSE = True
         while variables.PAUSE:
@@ -78,8 +83,11 @@ class GameManager():
 
             pygame.display.update()
 
+    # Основной цикл игры
     def run_game(self):
         while variables.RUNNING:
+            
+            # Проверка на рестарт игры и перезапуск всех игровых объектов
             if variables.RESTART:
                 self.show_menu()
                 variables.RESTART = False
@@ -107,6 +115,8 @@ class GameManager():
                 variables.SHOOTING_ENEMIES.add(self.Shooting_enemy)     
                 variables.SCORE = 0
             self.clock.tick(variables.FPS)
+            
+            # Проверка на события
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     variables.RUNNING = False
@@ -120,6 +130,7 @@ class GameManager():
                         variables.RUNNING = False
                         variables.MENU = True                                   
             
+            # Коллизии 
             collision_with_enemies = pygame.sprite.spritecollide(self.Player, variables.ENEMIES, True)
             if collision_with_enemies:
                 self.Enem = enemy.Enemies()
@@ -165,8 +176,12 @@ class GameManager():
                 variables.ALL_SPRITES.add(self.Tree)
                 variables.TREES.add(self.Tree)
             
+            
+            # Обновление всех спрайтов
             variables.ALL_SPRITES.update()        
             
+            
+            # Отрисовка на экране
             self.screen.fill((0, 0, 0))
             self.screen.blit(self.background, (0, 0))
             variables.ALL_SPRITES.draw(self.screen)

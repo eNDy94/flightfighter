@@ -2,6 +2,7 @@ import pygame
 import variables
 
 
+# Пуля
 class Bullet(pygame.sprite.Sprite):
 
     def __init__(self, x, y, object):
@@ -13,7 +14,8 @@ class Bullet(pygame.sprite.Sprite):
         self.rect.bottom = x
         self.rect.centerx = y
         self.speedx = 15
-     
+ 
+    # Метод обновления 
     def update(self):
         if self.object == "player":
             self.rect.x += self.speedx

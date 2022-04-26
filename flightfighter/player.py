@@ -18,11 +18,13 @@ class Player(pygame.sprite.Sprite):
         self.speedx = 0
         self.speedy = 0
 
+    # Метод стрельбы
     def shoot(self):
         Bullet = bullet.Bullet(self.rect.centery, self.rect.right, "player")
         variables.ALL_SPRITES.add(Bullet)
         variables.BULLETS.add(Bullet)
 
+    # Метод смерти
     def death(self):
         if self.Health <= 0:
             variables.RUNNING = False
@@ -33,6 +35,7 @@ class Player(pygame.sprite.Sprite):
             self.Health -= 1
             self.rect.center = (100, variables.HEIGHT / 2)
 
+    # Метод обновления спрайта на экране
     def update(self):
         self.speedx = 0
         self.speedy = 0

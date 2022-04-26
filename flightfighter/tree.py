@@ -3,6 +3,8 @@ import pygame
 import variables
 from os import path
 
+
+# Деревья
 class Trees(pygame.sprite.Sprite):
 
     def __init__(self):
@@ -16,6 +18,7 @@ class Trees(pygame.sprite.Sprite):
         self.rect.bottom = random.randrange(705, 715)
         self.speedx = 6
 
+    # Метод обновления
     def update(self):
         self.rect.x -= self.speedx
         if self.rect.right < -80:

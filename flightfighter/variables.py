@@ -2,7 +2,7 @@ import pygame
 from os import path
 import sys
 
-
+# Метод для создания временной папки при создании exe файла
 def resource_path(relative):
     if hasattr(sys, "_MEIPASS"):
         return path.join(sys._MEIPASS, relative)

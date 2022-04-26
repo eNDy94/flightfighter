@@ -5,6 +5,7 @@ import bullet
 from os import path
 
 
+# Стреляющие враги
 class Shooting_enemies(pygame.sprite.Sprite):
 
     def __init__(self):
@@ -16,12 +17,14 @@ class Shooting_enemies(pygame.sprite.Sprite):
         self.start_position_y = self.rect.centery
         self.speedx = 4
         self.speedy = 2
-        
+    
+    # Метод стреляющих врагов 
     def shoot(self):
         Bullet = bullet.Bullet(self.rect.centery, self.rect.left, "enemy")
         variables.ALL_SPRITES.add(Bullet)
         variables.ENEMYS_BULLETS.add(Bullet)
 
+    # Метод обновления
     def update(self):
         self.rect.x -= self.speedx
         self.rect.y += self.speedy

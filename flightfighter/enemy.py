@@ -4,6 +4,7 @@ import variables
 from os import path
 
 
+# Враги
 class Enemies(pygame.sprite.Sprite):
 
     def __init__(self):
@@ -14,6 +15,7 @@ class Enemies(pygame.sprite.Sprite):
         self.rect.center = (random.randrange(1050, 1150), (768 - 267 - (random.randrange(20, 300) + 60))) 
         self.speedx = random.randrange(3, 8)
 
+    # Метод обновления
     def update(self):
         self.rect.x -= self.speedx
         if self.rect.right < -100:
