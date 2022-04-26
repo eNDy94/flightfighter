@@ -23,11 +23,14 @@ PAUSE = False
 MENU = True
 SCREEN = WIDTH, HEIGHT = (1024, 768)
 FPS = 60
+TIMER = 0
 SCORE = 0
 ALL_SPRITES = pygame.sprite.Group()
 BULLETS = pygame.sprite.Group()
+ENEMYS_BULLETS = pygame.sprite.Group()
 ENEMIES = pygame.sprite.Group()
 TREES = pygame.sprite.Group()
 CLOUDS = pygame.sprite.Group()
+SHOOTING_ENEMIES = pygame.sprite.Group()
 FONT_NAME = pygame.font.match_font("arial")
 RESTART = True

@@ -19,7 +19,7 @@ class Player(pygame.sprite.Sprite):
         self.speedy = 0
 
     def shoot(self):
-        Bullet = bullet.Bullet(self.rect.centery, self.rect.right)
+        Bullet = bullet.Bullet(self.rect.centery, self.rect.right, "player")
         variables.ALL_SPRITES.add(Bullet)
         variables.BULLETS.add(Bullet)
 

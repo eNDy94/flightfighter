@@ -11,8 +11,7 @@ class Enemies(pygame.sprite.Sprite):
         self.enemy_sprite = pygame.image.load(path.join(variables.IMG_DIR, "Enemy.png")).convert_alpha()
         self.image = self.enemy_sprite
         self.rect = self.image.get_rect()
-        self.rect.x = random.randrange(1050, 1150)
-        self.rect.y = 768 - 267 - (random.randrange(20, 300) + 60)
+        self.rect.center = (random.randrange(1050, 1150), (768 - 267 - (random.randrange(20, 300) + 60))) 
         self.speedx = random.randrange(3, 8)
 
     def update(self):
