@@ -9,7 +9,7 @@ class Trees(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.tree_width = random.randrange(40, 80)
         self.tree_height = random.randrange(120, 200)
-        self.image = pygame.image.load(path.join(variables.IMG_DIR, "Tree.png"))
+        self.image = pygame.image.load(path.join(variables.IMG_DIR, "Tree.png")).convert_alpha()
         self.image = pygame.transform.scale(self.image, (self.tree_width, self.tree_height))
         self.rect = self.image.get_rect()
         self.rect.right = random.randrange(1100, 1500)

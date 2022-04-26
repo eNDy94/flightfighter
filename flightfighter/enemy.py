@@ -8,7 +8,7 @@ class Enemies(pygame.sprite.Sprite):
 
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.enemy_sprite = pygame.image.load(path.join(variables.IMG_DIR, "Enemy.png"))
+        self.enemy_sprite = pygame.image.load(path.join(variables.IMG_DIR, "Enemy.png")).convert_alpha()
         self.image = self.enemy_sprite
         self.rect = self.image.get_rect()
         self.rect.x = random.randrange(1050, 1150)

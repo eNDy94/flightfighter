@@ -10,7 +10,7 @@ class Player(pygame.sprite.Sprite):
 
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.Player_sprite = pygame.image.load(path.join(variables.IMG_DIR, "Player.png"))
+        self.Player_sprite = pygame.image.load(path.join(variables.IMG_DIR, "Player.png")).convert_alpha()
         self.Health = 2
         self.image = self.Player_sprite
         self.rect = self.image.get_rect()

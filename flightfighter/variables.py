@@ -1,4 +1,3 @@
-from pickle import FALSE
 import pygame
 from os import path
 import sys

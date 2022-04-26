@@ -1,4 +1,3 @@
-from ast import While
 import pygame
 import player
 import enemy
@@ -12,9 +11,9 @@ class GameManager():
 
     def __init__(self):
         pygame.init()
-        self.background = pygame.image.load(path.join(variables.IMG_DIR, "background.png"))
-        self.background_rect = self.background.get_rect()
         self.screen = pygame.display.set_mode(variables.SCREEN)
+        self.background = pygame.image.load(path.join(variables.IMG_DIR, "background.png")).convert_alpha()
+        self.background_rect = self.background.get_rect()
         pygame.display.set_caption("Flight Fighter")
         self.clock = pygame.time.Clock()
         for x in range(3):
@@ -42,7 +41,7 @@ class GameManager():
     def show_menu(self):
         while variables.MENU:
             self.clock.tick(variables.FPS)
-            self.background = pygame.image.load(path.join(variables.IMG_DIR, "background.png"))
+            self.background = pygame.image.load(path.join(variables.IMG_DIR, "background.png")).convert_alpha()
             
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -80,7 +79,7 @@ class GameManager():
                 self.show_menu()
                 variables.RESTART = False
                 variables.ALL_SPRITES = pygame.sprite.Group()
-                self.background = pygame.image.load(path.join(variables.IMG_DIR, "background.png"))
+                self.background = pygame.image.load(path.join(variables.IMG_DIR, "background.png")).convert_alpha()
                 variables.BULLETS = pygame.sprite.Group()
                 variables.ENEMIES = pygame.sprite.Group()
                 variables.TREES = pygame.sprite.Group()

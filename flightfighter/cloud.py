@@ -10,7 +10,7 @@ class Clouds(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.cloud_width = random.randrange(250, 330)
         self.cloud_height = random.randrange(180, 220)
-        self.image = pygame.image.load(path.join(variables.IMG_DIR, "Cloud.png"))
+        self.image = pygame.image.load(path.join(variables.IMG_DIR, "Cloud.png")).convert_alpha()
         self.image = pygame.transform.scale(self.image, (self.cloud_width, self.cloud_height))
         self.rect = self.image.get_rect()
         self.rect.right = random.randrange(1050, 1500)
